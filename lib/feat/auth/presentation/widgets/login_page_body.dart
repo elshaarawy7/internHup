@@ -135,12 +135,14 @@ class _LoginPageBodyState extends State<LoginPageBody> {
               // ── Login Button ──────────────────────────────────────
               AuthPrimaryButton(
                 text: 'Login →',
-                onPressed: () {},
+                onPressed: () {
+                  context.push(AppRouter.chooseAccountTypeRoute);
+                },
               ),
 
               const Gap(24),
 
-              CustemDriver(),
+              CustemDriver(), 
 
               const Gap(24),
 
