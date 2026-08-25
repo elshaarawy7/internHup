@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intern_hup/core/constant/images_app.dart';
+import 'package:intern_hup/core/helper/app_router.dart';
 
 class SplashPageBody extends StatefulWidget {
   const SplashPageBody({super.key});
@@ -44,7 +46,21 @@ class _SplashPageBodyState extends State<SplashPageBody>
       ),
     );
 
-    _controller.forward();
+    _startSplash();
+  }
+
+  Future<void> _startSplash() async {
+    // تشغيل الـ Animation
+    await _controller.forward();
+
+    // وقت بسيط بعد انتهاء الـ Animation
+    await Future.delayed(
+      const Duration(milliseconds: 500),
+    );
+
+    if (!mounted) return;
+
+    context.go(AppRouter.onBordingRoute);
   }
 
   @override
