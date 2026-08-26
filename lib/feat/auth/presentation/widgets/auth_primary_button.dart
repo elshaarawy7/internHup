@@ -53,7 +53,7 @@ class AuthPrimaryButton extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             borderRadius: BorderRadius.circular(14),
-            onTap: _isDisabled ? null : onPressed,
+            onTap: onPressed ,
             splashColor: Colors.white.withValues(alpha: 0.15),
             child: Center(
               child: AnimatedSwitcher(

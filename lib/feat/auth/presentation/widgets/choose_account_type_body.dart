@@ -145,7 +145,7 @@ class _BackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pop(),
+      onTap: () => context.go(AppRouter.loginRoute), 
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         width: 44,
