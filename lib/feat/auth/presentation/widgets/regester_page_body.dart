@@ -167,7 +167,7 @@ class _RegesterPageBodyState extends State<RegesterPageBody> {
                     },
                   ),
                   const Gap(28),
-                  AuthPrimaryButton(
+                  CustemBatton(
                     text: 'Create account',
                     isLoading: isLoading,
                     onPressed: isLoading

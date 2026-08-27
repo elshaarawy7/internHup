@@ -39,24 +39,22 @@ class _LoginPageBodyState extends State<LoginPageBody> {
             backgroundColor: Colors.green,
             textColor: Colors.white,
             fontSize: 16.0,
-          );  
+          );
 
-          context.push(AppRouter.chooseAccountTypeRoute) ;
-
-          
-        } 
+          context.push(AppRouter.chooseAccountTypeRoute);
+        }
 
         if (state is LoginFailure) {
-            Fluttertoast.showToast(
-              msg: "Login Failed",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIosWeb: 1,
-              backgroundColor: Colors.red,
-              textColor: Colors.white,
-              fontSize: 16.0,
-            );
-          }
+          Fluttertoast.showToast(
+            msg: "Login Failed",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0,
+          );
+        }
       },
       builder: (context, state) {
         final cubit = LoginCubit.get(context);
@@ -152,7 +150,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                             color: AppColors.primColor,
                           ),
                         )
-                      : AuthPrimaryButton(
+                      : CustemBatton(
                           text: 'Login →',
                           onPressed: () {
                             if (cubit.formKey.currentState!.validate()) {

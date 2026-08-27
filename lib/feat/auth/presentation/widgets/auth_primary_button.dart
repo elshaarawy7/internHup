@@ -5,8 +5,8 @@ import 'package:intern_hup/core/constant/app_color.dart';
 ///
 /// Handles normal, loading, and disabled states.
 /// Used across: Login, Register, Forgot Password, and other forms.
-class AuthPrimaryButton extends StatelessWidget {
-  const AuthPrimaryButton({
+class CustemBatton extends StatelessWidget {
+  const CustemBatton({
     super.key,
     required this.text,
     this.onPressed,
@@ -38,7 +38,9 @@ class AuthPrimaryButton extends StatelessWidget {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                 ),
-          color: _isDisabled ? AppColors.primColor.withValues(alpha: 0.5) : null,
+          color: _isDisabled
+              ? AppColors.primColor.withValues(alpha: 0.5)
+              : null,
           boxShadow: _isDisabled
               ? null
               : [
@@ -53,7 +55,7 @@ class AuthPrimaryButton extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             borderRadius: BorderRadius.circular(14),
-            onTap: onPressed ,
+            onTap: onPressed,
             splashColor: Colors.white.withValues(alpha: 0.15),
             child: Center(
               child: AnimatedSwitcher(
