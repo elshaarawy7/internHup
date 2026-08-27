@@ -26,10 +26,33 @@ class AuthRepoImpl implements AuthRepo {
       final result = await userDataSource.register(email, password, name);
       return Right(result);
     } on AuthApiException catch  (e) {
-print("Supabase Auth Error: ${e.message}");  
+print("Supabase Auth Error: ${e.message}");
 
 
     return left(ServerFuiler('Failed to create your account. Please try again.'));
+    } catch (e, st) {
+      print("Register Error: $e");
+      print("StackTrace: $st");
+      return left(ServerFuiler(
+          'Failed to create your account: ${e.toString().replaceFirst('Exception: ', '')}'));
+    }
+  }
+
+  @override
+  Future<Either<Fuiler, UserEntity>> signWithGoogle() async {
+    try {
+      final result = await userDataSource.SinginWihtGoogle();
+      return Right(result);
+    } on AuthApiException catch (e) {
+      print("Supabase Auth Error: ${e.message}");
+      return left(ServerFuiler(
+          'Failed to sign in with Google. Please try again. (${e.message})'));
+    } catch (e, st) {
+      // التقاط أي خطأ عام (مثل PlatformException من Google Sign-In)
+      print("Google Sign-In Error: $e");
+      print("StackTrace: $st");
+      return left(ServerFuiler(
+          'Failed to sign in with Google: ${e.toString().replaceFirst('Exception: ', '')}'));
     }
   }
 }

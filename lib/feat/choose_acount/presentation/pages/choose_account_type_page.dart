@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intern_hup/core/helper/app_router.dart';
-import 'package:intern_hup/feat/auth/presentation/widgets/choose_account_type_body.dart';
+import 'package:intern_hup/feat/choose_acount/presentation/widgets/choose_account_type_body.dart';
 
 /// The "Choose Account Type" screen.
 ///

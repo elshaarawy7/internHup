@@ -7,6 +7,7 @@ import 'package:intern_hup/feat/auth/data/datasources/user_datasource.dart';
 import 'package:intern_hup/feat/auth/data/repo/auth_repo.dart';
 import 'package:intern_hup/feat/auth/data/repo/uath_repo_imple.dart';
 import 'package:intern_hup/feat/auth/presentation/cubit/login/login_cubit.dart';
+import 'package:intern_hup/feat/auth/presentation/cubit/google/google_cubit.dart';
 import 'package:intern_hup/feat/auth/presentation/cubit/regester/regester_cubit.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -21,6 +22,9 @@ void setupGetIt() {
   );
   getIt.registerFactory<LoginCubit>(
     () => LoginCubit(getIt<AuthRepo>()),
+  );
+  getIt.registerFactory<GogooleCubit>(
+    () => GogooleCubit(getIt<AuthRepo>()),
   );
   getIt.registerFactory<RegeseterCubit>(
     () => RegeseterCubit(getIt<AuthRepo>()),

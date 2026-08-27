@@ -167,11 +167,11 @@ class _LoginPageBodyState extends State<LoginPageBody> {
 
                   const Gap(24),
 
-                  GoogleLoginButton(onPressed: () {}),
+                  ScoilBattonAuth(),
 
                   const Gap(32),
                   RegisterPrompt(
-                    onTap: () {
+                    onPressed: () {
                       context.push(AppRouter.regesterRoute);
                     },
                     text: "Register",

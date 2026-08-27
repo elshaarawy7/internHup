@@ -3,14 +3,9 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intern_hup/core/constant/app_color.dart';
 import 'package:intern_hup/core/helper/app_router.dart';
-import 'package:intern_hup/feat/auth/presentation/widgets/account_type_card.dart';
+import 'package:intern_hup/feat/choose_acount/presentation/widgets/account_type_card.dart';
 import 'package:intern_hup/feat/auth/presentation/widgets/auth_primary_button.dart';
 
-/// The body of the "Choose Account Type" screen.
-///
-/// Manages the local selection state ([AccountType?]) and composes the
-/// two [AccountTypeCard]s and the "Continue" [AuthPrimaryButton].
-/// Navigation is delegated to [AppRouter] via GoRouter.
 class ChooseAccountTypeBody extends StatefulWidget {
   const ChooseAccountTypeBody({super.key});
 

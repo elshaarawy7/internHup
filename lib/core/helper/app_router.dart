@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:intern_hup/feat/auth/presentation/pages/choose_account_type_page.dart';
+import 'package:intern_hup/feat/choose_acount/presentation/pages/choose_account_type_page.dart';
 import 'package:intern_hup/feat/auth/presentation/pages/login_page.dart';
 import 'package:intern_hup/feat/auth/presentation/pages/regester_page.dart';
 import 'package:intern_hup/feat/company/presentation/pages/company_register_page.dart';

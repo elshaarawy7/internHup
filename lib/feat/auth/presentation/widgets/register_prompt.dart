@@ -8,9 +8,9 @@ import 'package:intern_hup/core/constant/app_color.dart';
 ///
 /// This widget is extracted for reuse across multiple authentication screens.
 class RegisterPrompt extends StatelessWidget {
-  const RegisterPrompt({super.key, required this.onTap, required this.text});
+  const RegisterPrompt({super.key, required this.onPressed , required this.text});
 
-  final VoidCallback onTap;
+  final void Function()? onPressed ;
   final String text;
 
   @override
@@ -26,19 +26,16 @@ class RegisterPrompt extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        GestureDetector(
-          onTap: onTap,
-          child: TextButton(
-            onPressed: onTap,
-            child: Text(
-              text,
-              style: TextStyle(
-                fontSize: 14,
-                color: AppColors.primColor,
-                fontWeight: FontWeight.w700,
-                decoration: TextDecoration.underline,
-                decorationColor: AppColors.primColor,
-              ),
+        TextButton(
+          onPressed: onPressed,
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 14,
+              color: AppColors.primColor,
+              fontWeight: FontWeight.w700,
+              decoration: TextDecoration.underline,
+              decorationColor: AppColors.primColor,
             ),
           ),
         ),
