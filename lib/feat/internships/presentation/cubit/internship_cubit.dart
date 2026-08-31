@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intern_hup/feat/internships/domain/entities/internship_entity.dart';
 import 'package:intern_hup/feat/internships/domain/usecases/get_internships_use_case.dart';
 import 'package:intern_hup/feat/internships/presentation/cubit/internship_state.dart';
 

@@ -76,13 +76,10 @@ class InsternshipPageBody extends StatelessWidget {
                         isCompany: true,
                         onEdit: () => context.push(AppRouter.jopDetilsRoute),
                         onDelete: () => onDelete(internship, index),
-                        onViewApplicants: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Applicants view is coming soon.'),
-                            ),
-                          );
-                        },
+                        onViewApplicants: () => context.push(
+                          AppRouter.internshipApplicantsRoute,
+                          extra: internship,
+                        ),
                       );
                     },
                   ),

@@ -13,6 +13,7 @@ class InternshipModel extends InternshipEntity {
     super.requirements,
     super.deadline,
     super.createdAt,
+    super.applicantCount = 0,
   });
 
   factory InternshipModel.fromJson(Map<String, dynamic> json) {
@@ -28,6 +29,7 @@ class InternshipModel extends InternshipEntity {
       requirements: json['requirements']?.toString(),
       deadline: _parseDate(json['deadline']),
       createdAt: _parseDate(json['created_at']),
+      applicantCount: _extractApplicantCount(json),
     );
   }
 
@@ -51,5 +53,25 @@ class InternshipModel extends InternshipEntity {
     if (value == null) return null;
     if (value is DateTime) return value;
     return DateTime.tryParse(value.toString());
+  }
+
+  static int _extractApplicantCount(Map<String, dynamic> json) {
+    final directCount = _asInt(json['applicant_count']);
+    if (directCount != null) return directCount;
+
+    final relatedApplications = json['internship_applications'];
+    if (relatedApplications is List && relatedApplications.isNotEmpty) {
+      final firstValue = relatedApplications.first;
+      if (firstValue is Map) return _asInt(firstValue['count']) ?? 0;
+    }
+    if (relatedApplications is Map) {
+      return _asInt(relatedApplications['count']) ?? 0;
+    }
+    return 0;
+  }
+
+  static int? _asInt(dynamic value) {
+    if (value is int) return value;
+    return int.tryParse(value?.toString() ?? '');
   }
 }

@@ -159,11 +159,11 @@ class _ChooseAccountTypePageState extends State<ChooseAccountTypePage> {
                       onPressed: _selected == null
                           ? null
                           : () {
-                               if(_selected == 'student'){
-                                  context.push(AppRouter.rootRouteStudent);
-                               } else{
-                                 context.push(AppRouter.rootRouteCompany);
-                               }
+                              if (_selected == 'student') {
+                                context.push(AppRouter.home_page_student);
+                              } else {
+                                context.push(AppRouter.homeRouteCompany);
+                              }
                             },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: _selected == null

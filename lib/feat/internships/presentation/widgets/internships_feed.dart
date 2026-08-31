@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:intern_hup/core/helper/app_router.dart';
 import 'package:intern_hup/core/services/getit.dart';
 import 'package:intern_hup/feat/internships/presentation/cubit/internship_cubit.dart';
 import 'package:intern_hup/feat/internships/presentation/cubit/internship_state.dart';
@@ -32,7 +34,10 @@ class _InternshipsFeedState extends State<InternshipsFeed> {
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
               child: TextField(
                 controller: _searchController,
-                onChanged: context.read<InternshipCubit>().searchInternships,
+                onChanged: (query) {
+                  context.read<InternshipCubit>().searchInternships(query);
+                  setState(() {});
+                },
                 textInputAction: TextInputAction.search,
                 decoration: InputDecoration(
                   hintText: 'Search by role, company, location, or skill',
@@ -101,14 +106,21 @@ class _InternshipsFeedState extends State<InternshipsFeed> {
                           return InternshipCard(
                             internship: internship,
                             isCompany: false,
-                            onApply: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Application started for ${internship.title}.',
-                                  ),
-                                ),
+                            onApply: () async {
+                              final submitted = await context.push<bool>(
+                                AppRouter.internshipApplicationRoute,
+                                extra: internship,
                               );
+                              if (submitted == true && context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'Your application was submitted successfully.',
+                                    ),
+                                    backgroundColor: Colors.green,
+                                  ),
+                                );
+                              }
                             },
                           );
                         },

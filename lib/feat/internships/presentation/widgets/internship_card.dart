@@ -118,6 +118,7 @@ class InternshipCard extends StatelessWidget {
           if (isCompany) _CompanyActions(
             onEdit: onEdit,
             onViewApplicants: onViewApplicants,
+            applicantCount: internship.applicantCount,
           ) else SizedBox(
             width: double.infinity,
             child: ElevatedButton(
@@ -140,16 +141,22 @@ class InternshipCard extends StatelessWidget {
 }
 
 class _CompanyActions extends StatelessWidget {
-  const _CompanyActions({this.onEdit, this.onViewApplicants});
+  const _CompanyActions({
+    this.onEdit,
+    this.onViewApplicants,
+    required this.applicantCount,
+  });
 
   final VoidCallback? onEdit;
   final VoidCallback? onViewApplicants;
+  final int applicantCount;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
+          flex: 2,
           child: OutlinedButton.icon(
             onPressed: onEdit,
             icon: const Icon(Icons.edit_outlined, size: 18),
@@ -158,13 +165,27 @@ class _CompanyActions extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         Expanded(
-          child: ElevatedButton.icon(
+          flex: 3,
+          child: ElevatedButton(
             onPressed: onViewApplicants,
-            icon: const Icon(Icons.groups_outlined, size: 18),
-            label: const Text('Applicants'),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primColor,
               foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.groups_outlined, size: 18),
+                  const SizedBox(width: 6),
+                  Text('View applicants ($applicantCount)'),
+                ],
+              ),
             ),
           ),
         ),

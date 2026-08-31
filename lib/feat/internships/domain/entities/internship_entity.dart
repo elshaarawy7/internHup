@@ -12,6 +12,7 @@ class InternshipEntity {
     this.requirements,
     this.deadline,
     this.createdAt,
+    this.applicantCount = 0,
   });
 
   final String? id;
@@ -25,4 +26,5 @@ class InternshipEntity {
   final String? requirements;
   final DateTime? deadline;
   final DateTime? createdAt;
+  final int applicantCount;
 }
